@@ -1,3 +1,7 @@
+# Loona Automation — robots.txt
+# Upload to the ROOT of the loonaautomation.github.io repo
+# (same place as the hub index.html and sitemap.xml)
 User-agent: *
 Allow: /
+
 Sitemap: https://loonaautomation.github.io/sitemap.xml

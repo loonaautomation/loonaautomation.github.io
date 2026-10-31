@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://loonaautomation.github.io/</loc><lastmod>2026-10-28</lastmod></url>
-<url><loc>https://loonaautomation.github.io/about.html</loc><lastmod>2026-10-28</lastmod></url>
-<url><loc>https://loonaautomation.github.io/contact.html</loc><lastmod>2026-10-28</lastmod></url>
-<url><loc>https://loonaautomation.github.io/privacy-policy.html</loc><lastmod>2026-10-28</lastmod></url>
-<url><loc>https://loonaautomation.github.io/terms.html</loc><lastmod>2026-10-28</lastmod></url>
+  <!-- Loona Automation — main hub + company page + all 17 live tools.
+       Upload this file to the ROOT of the loonaautomation.github.io repo
+       (same place as the hub index.html), then submit it in Search Console
+       as https://loonaautomation.github.io/sitemap.xml -->
+  <url><loc>https://loonaautomation.github.io/</loc><lastmod>2026-10-31</lastmod><priority>1.0</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-automation/</loc><lastmod>2026-10-31</lastmod><priority>0.9</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-qr-codes/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-image-compressor/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-calculators/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-ai/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-ai-notes/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/agentA/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-ad-studio/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-autopilot/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-bolti-kitab/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-calling-agent/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-edits/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-education/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-expense-app/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-habits-app/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-leadscore/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-talk/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://loonaautomation.github.io/loona-voiceover/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
 </urlset>
