@@ -25,7 +25,7 @@
 - [Loona Calling Agent](https://loonaautomation.github.io/loona-calling-agent/): AI calling agent for businesses.
 - [Loona Edits](https://loonaautomation.github.io/loona-edits/): Photo and video editing app.
 - [Loona Education](https://loonaautomation.github.io/loona-education/): AI teaching and learning platform with courses and enrollment.
-- [Loona Expense App](https://loonaautomation.github.io/loona-expense-app/): Free expense tracker — works offline, no signup, export to Excel/CSV.
+- [Loona Finance Tracker](https://loonaautomation.github.io/loona-expense-app/): Free finance tracker and budget planner — income & expenses, monthly budgets, bill reminders, debts, savings goals, CSV export and backup. No signup, works offline, data stays on your device.
 - [Loona Habits App](https://loonaautomation.github.io/loona-habits-app/): Free habit tracker with daily streaks and a Namaz (prayer) tracker.
 - [Loona LeadScore](https://loonaautomation.github.io/loona-leadscore/): AI lead scoring for businesses.
 - [Loona Talk](https://loonaautomation.github.io/loona-talk/): AI conversation app.
