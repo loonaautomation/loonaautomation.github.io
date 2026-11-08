@@ -65,6 +65,18 @@
 <h2>Printing and Placement Tips</h2>
 <p>Print on plain white card with the code in black — fancy colours and busy backgrounds reduce scanning reliability. Keep a quiet white margin around the code; scanners need it. If the code will sit near a window or in a café, laminate it so sunlight and spills do not fade it. A short caption helps first-time users: "Point your camera here to connect to our WiFi." In a larger place, print one code per room.</p>
 
+<h2>A Worked Example: A Café Sets Up Its WiFi Code</h2>
+<p>To make the steps concrete, here is how a small café might do it in practice. The owner opens the router's settings and creates a guest network named <em>BeanThere Guest</em> with its own password, separate from the network the till and office laptop use. In the generator she selects WPA/WPA2, types the network name exactly as <em>BeanThere Guest</em> — capitals and the space included — and enters the guest password character by character. She downloads the PNG, then tests before printing: on her own phone she "forgets" the guest network, scans the downloaded code from her computer screen, and confirms the phone offers to join and connects. Only then does she print the code at about 4 cm square on plain cards with the line "Scan to join our WiFi" underneath, and place one on each table. Three months later, when she rotates the guest password, she repeats the same ten-minute routine and swaps the cards — the old codes stop working because the password inside them is no longer the password on the router.</p>
+
+<h2>Common Mistakes That Stop a Code Working</h2>
+<ul>
+<li><strong>The password changed on the router, but the printed code did not.</strong> A WiFi QR code is a photograph of the details at the moment it was made. Change the password and every printed copy is instantly out of date.</li>
+<li><strong>A subtle typo in the network name.</strong> Phones match the SSID exactly. "Home_Wifi", "Home-Wifi" and "Home Wifi" are three different networks as far as a phone is concerned.</li>
+<li><strong>Printing the code too small.</strong> Below about 2.5–3 cm, cheaper phone cameras struggle, especially in dim light. Bigger is always easier to scan.</li>
+<li><strong>Testing on a phone that is already connected.</strong> A phone that knows the network will appear to "scan fine" even if the password in the code is wrong. Always test on a phone that has forgotten the network.</li>
+<li><strong>Laminating with glossy plastic and placing it in sunlight.</strong> Glare defeats cameras. Matte lamination, or a spot out of direct sun, scans far more reliably.</li>
+</ul>
+
 <h2>Frequently Asked Questions</h2>
 <h3>Do guests need a special app to scan a WiFi QR code?</h3>
 <p>No. The built-in camera app on almost all modern Android phones and iPhones (iPhone X and later, and most recent Android devices) recognises WiFi QR codes and offers to join the network directly.</p>
@@ -74,7 +86,12 @@
 <p>Almost always a typing mistake: a wrong capital letter, a space, or the wrong security type. Re-enter the password exactly as it appears in your router settings, and make sure you did not pick WEP for a WPA2 network. Also delete ("forget") the network on the test phone before rescanning.</p>
 <h3>Can one QR code work for both my home and shop?</h3>
 <p>Only if both places use the same network name and password, which is not recommended. Make a separate code for each network — for a business, always use the guest network.</p>
+<h3>My router has both 2.4 GHz and 5 GHz networks. Does the code still work?</h3>
+<p>Yes — the code simply joins whichever network name it contains. If your router shows one combined name for both bands (the common modern setup), one code covers both. If the bands have separate names, make one code for the name you want guests to use; the 2.4 GHz band is usually the friendlier choice because it reaches further through walls.</p>
+<h3>Does a WiFi QR code ever expire?</h3>
+<p>No. The code is not stored on any server and there is no account behind it — it works for exactly as long as the network name and password stay unchanged.</p>
 
+<p><em>By Aurang Zeb Loona — Loona Automation</em></p>
 <p>Ready to try it? Create your code now with the free <a href="https://loonaautomation.github.io/loona-qr-codes/wifi-qr-code-generator/">WiFi QR Code Generator</a>, or explore the other free QR tools — WhatsApp, vCard, location and more — on <a href="https://loonaautomation.github.io/loona-qr-codes/">Loona QR Codes</a>.</p>
 </main>
 <footer>

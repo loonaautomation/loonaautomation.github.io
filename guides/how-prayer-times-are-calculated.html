@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1566440962454692" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5L43M13ZYT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5L43M13ZYT');
+</script>
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "z599jkwoy9");
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Prayer Times Are Calculated: Methods, Angles and Asr Settings | Loona</title>
+<meta name="description" content="Prayer times are astronomy: sun depression angles for Fajr and Isha, the shadow rule for Asr, and why the same day produces different times in different cities and apps.">
+<link rel="canonical" href="https://loonaautomation.github.io/guides/how-prayer-times-are-calculated.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Loona Automation">
+<meta property="og:title" content="How Prayer Times Are Calculated: Methods, Angles and Asr Settings | Loona">
+<meta property="og:description" content="Prayer times are astronomy: sun depression angles for Fajr and Isha, the shadow rule for Asr, and why the same day produces different times in different cities and apps.">
+<meta property="og:url" content="https://loonaautomation.github.io/guides/how-prayer-times-are-calculated.html">
+<meta property="og:image" content="https://loonaautomation.github.io/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Prayer Times Are Calculated: Methods, Angles and Asr Settings | Loona">
+<meta name="twitter:description" content="Prayer times are astronomy: sun depression angles for Fajr and Isha, the shadow rule for Asr, and why the same day produces different times in different cities and apps.">
+<meta name="twitter:image" content="https://loonaautomation.github.io/og-image.jpg">
+<meta name="theme-color" content="#062e2a">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loonaautomation.github.io/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://loonaautomation.github.io/icon-192.png">
+<link rel="apple-touch-icon" href="https://loonaautomation.github.io/apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Loona Automation","url":"https://loonaautomation.github.io/","email":"loonaautomation@gmail.com","founder":{"@type":"Person","name":"Aurang Zeb Loona"},"logo":"https://loonaautomation.github.io/icon-512.png"},{"@type":"Article","headline":"How Prayer Times Are Calculated","description":"Prayer times are astronomy: sun depression angles for Fajr and Isha, the shadow rule for Asr, and why the same day produces different times in different cities and apps.","image":"https://loonaautomation.github.io/og-image.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://loonaautomation.github.io/guides/how-prayer-times-are-calculated.html"},"url":"https://loonaautomation.github.io/guides/how-prayer-times-are-calculated.html","author":{"@type":"Person","name":"Aurang Zeb Loona"},"publisher":{"@type":"Organization","name":"Loona Automation","url":"https://loonaautomation.github.io/","logo":{"@type":"ImageObject","url":"https://loonaautomation.github.io/icon-512.png"}}}]}</script>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Home</a> &raquo; <a href="../index.html#guides">Guides &amp; How-Tos</a> &raquo; How Prayer Times Are Calculated</p>
+<h1>How Prayer Times Are Calculated</h1>
+<p><em>By Aurang Zeb Loona — Loona Automation</em></p>
+
+<p>No clock in the sky announces the prayers. Every time on a prayer timetable is the calculated moment of an astronomical event — a particular position of the sun relative to your horizon. That is why the same day produces different times in Karachi and Faisalabad, why two apps on the same phone can disagree by ten minutes, and why the timetable changes daily. This guide explains the events behind each prayer, the calculation methods built on them, and the choices that explain nearly every difference you will ever see.</p>
+
+<h2>Each Prayer Is a Sun Position</h2>
+<ul>
+<li><strong>Fajr</strong> begins at dawn, when the sun is still below the horizon but its light starts spreading — measured by how far below the horizon the sun is, an angle called the <em>depression angle</em>. Methods commonly use 15° to 19.5°.</li>
+<li><strong>Sunrise</strong> is the moment the sun's upper edge crosses the horizon (calculations allow about 0.833° for atmospheric refraction and the sun's radius).</li>
+<li><strong>Dhuhr</strong> begins just after solar noon — the moment the sun crosses your local meridian and starts descending. Timetables add a small safety margin after the computed noon.</li>
+<li><strong>Asr</strong> is defined not by an angle but by <em>shadow length</em>, explained below.</li>
+<li><strong>Maghrib</strong> begins at sunset — the mirror of sunrise.</li>
+<li><strong>Isha</strong> begins when twilight has disappeared, again defined by a depression angle in most methods.</li>
+</ul>
+
+<h2>Calculation Methods: Same Sky, Different Angles</h2>
+<p>Organisations around the world have standardised the twilight angles they trust, and "choosing a method" in an app means choosing one of these sets: the <strong>Muslim World League</strong> uses Fajr 18°, Isha 18°; the <strong>University of Islamic Sciences, Karachi</strong> method likewise uses 18° and 18° and is the norm across Pakistan; <strong>ISNA</strong> (North America) uses 15° and 15°; the <strong>Egyptian General Authority</strong> uses 19.5° and 17.5°; <strong>Umm al-Qura</strong> (Makkah) uses Fajr 18.5° and fixes Isha at 90 minutes after Maghrib (120 minutes in Ramadan); Turkey's <strong>Diyanet</strong> uses 18° and 17°. A larger angle means an earlier Fajr and a later Isha — more of the twilight counted as night. None of these differences is a software bug; they are considered scholarly conventions, and the right one to follow is the one your local mosques and community use.</p>
+
+<h2>Asr: The Shadow Rule, and Why Hanafi Asr Is Later</h2>
+<p>Asr begins when the shadow of an object reaches a set length: the object's height <em>plus</em> the shadow it already casts at solar noon. The schools of jurisprudence differ on the multiplier. In the Shafi'i, Maliki and Hanbali view, the factor is <strong>1</strong> — shadow equals height, plus the noon shadow. In the Hanafi view, the factor is <strong>2</strong> — shadow equals <em>twice</em> the height, plus the noon shadow. A one-metre stick makes it concrete: suppose its noon shadow is 0.30 m. Asr by the factor-1 rule arrives when the shadow grows to 1.30 m; Hanafi Asr waits until 2.30 m — noticeably later in the afternoon, because the sun must sink further to stretch a shadow that long. This single setting explains the biggest everyday difference between timetables in Pakistan, where the Hanafi setting is the default.</p>
+
+<h2>Why Times Differ from City to City</h2>
+<p><strong>Longitude shifts everything.</strong> The earth turns 15° per hour, so each degree of longitude moves solar events by about 4 minutes of clock time. Karachi sits near 67.0°E and Faisalabad near 73.1°E — roughly 6 degrees apart — so the sun's events occur around 24 minutes later by the clock in Karachi, even though both cities share Pakistan's single time zone. <strong>Latitude changes the gaps.</strong> The further from the equator, the longer twilight lasts, so the Fajr–sunrise and Maghrib–Isha intervals stretch — dramatically so in northern summers. <strong>Altitude matters a little:</strong> from a few hundred metres up, you see the sun earlier at dawn and later at dusk, shifting sunrise and sunset by a minute or two. Add a slow daily drift — the sun's path changes with the seasons — and no honest timetable can be a fixed list of times.</p>
+
+<h2>The Hard Case: Very High Latitudes</h2>
+<p>Near the poles in summer, the sun may never sink 18° below the horizon — true night, by the angle definition, never occurs, so Fajr and Isha have no astronomical moment to attach to. Communities there follow scholarly adjustments instead: using a fraction of the night borrowed from the nearest date or place where twilight does complete, or following the timetable of a reference city. If your app shows a "high latitude" setting, this is the problem it is solving.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Why does my app differ from my mosque's timetable by a few minutes?</h3>
+<p>Usually one of three small causes: a different calculation method (check the angles), the other Asr factor, or a deliberate precautionary margin of a minute or two that many mosque boards add. Match the method and Asr setting to your mosque and the gap normally disappears.</p>
+<h3>Which method should I select in Pakistan?</h3>
+<p>The University of Islamic Sciences, Karachi method with the Hanafi Asr setting — it is what the overwhelming majority of Pakistani timetables, mosques and calendars use, and it is the default on <a href="https://loonaautomation.github.io/loona-islamic-tools/">Loona Islamic Tools</a>.</p>
+<h3>Why do Fajr and Isha move so much more across the year than Dhuhr?</h3>
+<p>Dhuhr follows solar noon, which wobbles only modestly across the seasons. Fajr and Isha depend on twilight, whose length depends on how steeply the sun crosses the horizon — a geometry that changes strongly with season and latitude. In summer the twilight stretches, pulling Fajr earlier and pushing Isha later; in winter it compresses.</p>
+<h3>Are computer-calculated times reliable?</h3>
+<p>Yes — the underlying solar mathematics is precise to well under a minute, and it is the same astronomy used for official calendars. The visible differences between timetables come from the conventions above (method, Asr factor, safety margins), not from calculation error.</p>
+
+<p>See the method in action on <a href="https://loonaautomation.github.io/loona-islamic-tools/">Loona Islamic Tools</a> — prayer times for any city, Qibla direction, Hijri date and prepared timetables for thirty cities, with the Karachi method and Hanafi Asr set by default. This guide explains the astronomy and the conventions; for religious rulings in your own situation, your local scholars remain the authority.</p>
+</main>
+<footer>
+<nav>
+<a href="../index.html">Home</a> |
+<a href="../about.html">About</a> |
+<a href="../contact.html">Contact</a> |
+<a href="../privacy-policy.html">Privacy Policy</a> |
+<a href="../terms.html">Terms</a>
+</nav>
+</footer>
+</body>
+</html>

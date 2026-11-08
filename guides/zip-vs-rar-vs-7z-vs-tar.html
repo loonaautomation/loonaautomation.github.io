@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1566440962454692" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5L43M13ZYT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5L43M13ZYT');
+</script>
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "z599jkwoy9");
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZIP vs RAR vs 7Z vs TAR: Archive Formats Explained — and How to Open Each | Loona</title>
+<meta name="description" content="The four archive formats compared honestly: compression, encryption, who can create them, and how to open ZIP, RAR, 7Z and TAR files — including in your browser.">
+<link rel="canonical" href="https://loonaautomation.github.io/guides/zip-vs-rar-vs-7z-vs-tar.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Loona Automation">
+<meta property="og:title" content="ZIP vs RAR vs 7Z vs TAR: Archive Formats Explained — and How to Open Each | Loona">
+<meta property="og:description" content="The four archive formats compared honestly: compression, encryption, who can create them, and how to open ZIP, RAR, 7Z and TAR files — including in your browser.">
+<meta property="og:url" content="https://loonaautomation.github.io/guides/zip-vs-rar-vs-7z-vs-tar.html">
+<meta property="og:image" content="https://loonaautomation.github.io/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ZIP vs RAR vs 7Z vs TAR: Archive Formats Explained — and How to Open Each | Loona">
+<meta name="twitter:description" content="The four archive formats compared honestly: compression, encryption, who can create them, and how to open ZIP, RAR, 7Z and TAR files — including in your browser.">
+<meta name="twitter:image" content="https://loonaautomation.github.io/og-image.jpg">
+<meta name="theme-color" content="#062e2a">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loonaautomation.github.io/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://loonaautomation.github.io/icon-192.png">
+<link rel="apple-touch-icon" href="https://loonaautomation.github.io/apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Loona Automation","url":"https://loonaautomation.github.io/","email":"loonaautomation@gmail.com","founder":{"@type":"Person","name":"Aurang Zeb Loona"},"logo":"https://loonaautomation.github.io/icon-512.png"},{"@type":"Article","headline":"ZIP vs RAR vs 7Z vs TAR: Archive Formats Explained","description":"The four archive formats compared honestly: compression, encryption, who can create them, and how to open ZIP, RAR, 7Z and TAR files — including in your browser.","image":"https://loonaautomation.github.io/og-image.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://loonaautomation.github.io/guides/zip-vs-rar-vs-7z-vs-tar.html"},"url":"https://loonaautomation.github.io/guides/zip-vs-rar-vs-7z-vs-tar.html","author":{"@type":"Person","name":"Aurang Zeb Loona"},"publisher":{"@type":"Organization","name":"Loona Automation","url":"https://loonaautomation.github.io/","logo":{"@type":"ImageObject","url":"https://loonaautomation.github.io/icon-512.png"}}}]}</script>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Home</a> &raquo; <a href="../index.html#guides">Guides &amp; How-Tos</a> &raquo; ZIP vs RAR vs 7Z vs TAR</p>
+<h1>ZIP vs RAR vs 7Z vs TAR: Archive Formats, Explained</h1>
+<p><em>By Aurang Zeb Loona — Loona Automation</em></p>
+
+<p>Four letters on a file — .zip, .rar, .7z, .tar — decide whether the person you sent it to can open it at all. All four formats bundle many files into one and usually shrink them, but they differ in how well they compress, who is allowed to create them, what protection they offer, and what the receiving computer needs. This guide compares them honestly and then shows how to open each one — including the case where you cannot install anything.</p>
+
+<h2>The Four Formats, One by One</h2>
+<p><strong>ZIP</strong> (1989, from PKZIP) is the universal format. It compresses each file with the DEFLATE algorithm, is an open specification, and is built into Windows, macOS and every phone: double-click and it opens. Its compression is good rather than the best, and its modern AES encryption is widely supported (its old ZipCrypto encryption is weak and should be avoided). If a stranger must open your file on an unknown machine, ZIP is the answer.</p>
+<p><strong>RAR</strong> is a proprietary format from the makers of WinRAR. It compresses somewhat better than ZIP, can split archives into numbered parts, and carries a distinctive feature: <em>recovery records</em> — extra data that can repair a damaged archive, valuable for files that travelled through flaky connections. Opening RAR files is free in many tools; <em>creating</em> them requires WinRAR or a licensed library, which is why free online tools (including ours) can open and convert RAR files but cannot create them.</p>
+<p><strong>7Z</strong>, the format of the free 7-Zip program, is fully open and usually produces the <em>smallest</em> files, thanks to the LZMA2 algorithm, at the cost of slower compression. Its AES-256 encryption can also encrypt the file <em>names</em>, so even the list of contents stays private. Support is the catch: older Windows installs cannot open 7Z without extra software (recent Windows 11 versions handle it natively).</p>
+<p><strong>TAR</strong> is the odd one out: it comes from the era of tape backups ("tape archive") and does <em>no compression at all</em> — it simply bundles files into one container with their folder structure intact. Compression is bolted on separately, which is why you meet <strong>.tar.gz</strong> (gzip: fast, moderate squeeze), <strong>.tar.bz2</strong>, and <strong>.tar.xz</strong> (slow, very small). TAR bundles are the native language of Linux, backups and source-code distribution.</p>
+
+<h2>How the Sizes Typically Compare</h2>
+<p>For a 100 MB folder of ordinary documents and text — where compression has something to grip — results typically fall in these ranges (your files will differ): plain TAR stays 100 MB; ZIP and TAR.GZ land around 35–45 MB; RAR around 30–40 MB; 7Z and TAR.XZ around 25–35 MB. The crucial exception: photos, videos and music are <em>already</em> compressed, so no format shrinks them much — a folder of JPGs stays near its size in every archive. When an archive barely shrinks, that is physics, not a faulty tool.</p>
+
+<h2>How to Open Each Format</h2>
+<ul>
+<li><strong>ZIP:</strong> double-click in Windows or macOS; on a phone, tap the file. Nothing to install.</li>
+<li><strong>TAR / TAR.GZ:</strong> native on macOS and Linux; recent Windows versions open them too; mobile may need an app.</li>
+<li><strong>RAR and 7Z:</strong> recent Windows 11 opens both; otherwise install a free archiver such as 7-Zip — or use the browser route below.</li>
+<li><strong>In your browser, installing nothing:</strong> the archive tools on <a href="https://loonaautomation.github.io/loona-dev-tools/">Loona Developer Tools</a> open ZIP, RAR, 7Z, TAR, TAR.GZ, single-file GZ and ISO disc images right on the page — the file is processed on your own device, never uploaded — list the contents, download what you need, or convert the whole archive to ZIP so any computer can take it from there. The same family creates new ZIP and TAR archives in the browser.</li>
+</ul>
+
+<h2>Which Should You Create?</h2>
+<p>Sending files to people whose computers you do not know: <strong>ZIP</strong>. Smallest possible download and strong privacy, among people who have an archiver: <strong>7Z</strong>. Backing up a Linux system or shipping source code: <strong>TAR.GZ</strong> (or TAR.XZ when size beats speed). <strong>RAR</strong> you will mostly receive rather than create — and when you do, converting it to ZIP is usually the friendliest onward move. Whatever you create, add a password through a channel other than the same message that carries the file, and remember that encryption is only as strong as that password.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Why won't this .rar file open completely?</h3>
+<p>The two usual causes are a password (ask the sender — password-protected archives cannot and should not be cracked by a tool) and a multi-part set: files named .part1.rar, .part2.rar and so on must all sit in the same folder before extraction works; a missing part means a broken archive.</p>
+<h3>Is TAR compressed? Why is my .tar file the same size as the originals?</h3>
+<p>No — TAR only bundles. That is expected behaviour. If you wanted the bundle <em>and</em> the squeeze, the file you need is .tar.gz or .tar.xz.</p>
+<h3>Which format has the strongest password protection?</h3>
+<p>7Z with AES-256 and header encryption enabled, using a long password: it hides even the file names. Modern ZIP with AES-256 is also sound. Avoid ZIP's legacy ZipCrypto option, which is considered weak.</p>
+<h3>Can an archive damage or infect my computer?</h3>
+<p>An archive is inert until extracted, but the files inside are ordinary files — treat unknown archives from strangers as you would any unknown download, and let your antivirus scan extractions. Opening an archive in a browser-based tool adds a safety margin, because the contents stay in the page until you choose to download individual files.</p>
+
+<p>Open or convert any of these formats now with the free archive tools on <a href="https://loonaautomation.github.io/loona-dev-tools/">Loona Developer Tools</a> — no installation, no uploads, and a ZIP at the end that every computer understands.</p>
+</main>
+<footer>
+<nav>
+<a href="../index.html">Home</a> |
+<a href="../about.html">About</a> |
+<a href="../contact.html">Contact</a> |
+<a href="../privacy-policy.html">Privacy Policy</a> |
+<a href="../terms.html">Terms</a>
+</nav>
+</footer>
+</body>
+</html>

@@ -63,6 +63,25 @@
 <li><strong>Use an even, plain background.</strong> Busy backgrounds "cost" more data. This is another reason official photos demand a plain white or light background.</li>
 </ul>
 
+<h2>A Worked Example, with Real Numbers</h2>
+<p>Suppose a university portal asks for a passport-style photograph "not exceeding 50KB", and the photo on your phone is a typical 4032 × 3024 pixel camera shot of 3.8 MB. Here is what actually happens, step by step:</p>
+<ol>
+<li><strong>Crop to the shape the form wants.</strong> Passport photographs are square or near-square, so crop the 4032 × 3024 frame to a square around the head and shoulders. Most of the original pixels — the room behind you — are discarded, and they were most of the file.</li>
+<li><strong>Resize to the size the form actually displays.</strong> The portal will never show your photo larger than a few hundred pixels. Resizing the crop to 600 × 600 pixels leaves 360,000 pixels from the original 12.2 million — about 3% of the data, and still sharp at the size an ID-style photo is viewed.</li>
+<li><strong>Save as JPG at a moderate-high quality.</strong> A plain-background portrait at 600 × 600 typically lands somewhere between 40KB and 50KB at this point. A compress-to-size tool then fine-tunes the quality up or down by small steps until the file sits just under your target — aim for 47–49KB, leaving a safety margin.</li>
+<li><strong>Check before uploading.</strong> Open the result and zoom: the face should be recognisable and clean-edged. Confirm the size in the file's properties, not just in the tool.</li>
+</ol>
+<p>The lesson of the example is the order of operations: <strong>crop, then resize, then compress</strong>. Most people do only the third step, forcing the quality down brutally to squeeze a huge picture into a tiny file — which is where the familiar blurry, blocky ID photos come from.</p>
+
+<h2>Common Mistakes</h2>
+<ul>
+<li><strong>Starting from a WhatsApp or screenshot copy.</strong> Messaging apps have already compressed and shrunk your photo once; compressing that copy again multiplies the damage. Always start from the original in your camera gallery.</li>
+<li><strong>Aiming exactly at the limit.</strong> If the limit is 50KB, a file of exactly 50KB can still be rejected, because systems differ on whether a kilobyte means 1,000 or 1,024 bytes. Leave a 2–3KB margin.</li>
+<li><strong>Choosing PNG for a photograph.</strong> PNG is excellent for text and line art but produces much larger files for photos. For a photo, JPG is almost always the format that fits.</li>
+<li><strong>Re-compressing the compressed file.</strong> Each save discards more detail. If the result looks bad, go back to the original and change the settings — never feed the output back in.</li>
+<li><strong>Ignoring a dimension requirement.</strong> Some portals check pixels as well as kilobytes. A 48KB file at the wrong dimensions is rejected just as firmly as an oversized one.</li>
+</ul>
+
 <h2>Frequently Asked Questions</h2>
 <h3>Will compressing my photo to 50KB make it blurry?</h3>
 <p>A properly compressed photo at sensible dimensions stays clear for its intended use — a small photo displayed on a form or ID card. It will not be suitable for a large print, which is why you should always keep the original file separately.</p>
@@ -72,7 +91,10 @@
 <p>Meet the dimensions first by cropping/resizing your photo to the requested pixel size, then compress to the size limit. Forms check both, and a file that passes one test but fails the other is still rejected.</p>
 <h3>My file is still slightly above the limit. Any quick fixes?</h3>
 <p>Reduce the width by 10–15%, or lower the target a little more. Also check you exported JPG, not PNG — switching formats alone often halves the size of a photograph.</p>
+<h3>Is resizing or lowering quality better for keeping a photo clear?</h3>
+<p>Resizing, almost always. A photo's file size grows with its pixel count, so halving the width quarters the data while the picture still looks identical at the small size a form displays. Quality reduction, by contrast, introduces visible blockiness and smearing. The reliable sequence is: crop to the required shape, resize to sensible dimensions, and only then let compression fine-tune the last few kilobytes.</p>
 
+<p><em>By Aurang Zeb Loona — Loona Automation</em></p>
 <p>Try it now with the free <a href="https://loonaautomation.github.io/loona-image-compressor/">Loona Image Compressor</a> — no sign-up, no uploads, works on any phone or computer. For more free tools, visit the <a href="https://loonaautomation.github.io/">Loona Automation homepage</a>.</p>
 </main>
 <footer>

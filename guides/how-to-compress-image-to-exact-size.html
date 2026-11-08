@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1566440962454692" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5L43M13ZYT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5L43M13ZYT');
+</script>
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "z599jkwoy9");
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Compress an Image to an Exact Size in KB — Any Target | Loona</title>
+<meta name="description" content="Need an image at exactly 20KB, 100KB, 200KB or any other size? Learn the three levers — dimensions, format and quality — with a worked example and the mistakes to avoid.">
+<link rel="canonical" href="https://loonaautomation.github.io/guides/how-to-compress-image-to-exact-size.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Loona Automation">
+<meta property="og:title" content="How to Compress an Image to an Exact Size in KB — Any Target | Loona">
+<meta property="og:description" content="Need an image at exactly 20KB, 100KB, 200KB or any other size? Learn the three levers — dimensions, format and quality — with a worked example and the mistakes to avoid.">
+<meta property="og:url" content="https://loonaautomation.github.io/guides/how-to-compress-image-to-exact-size.html">
+<meta property="og:image" content="https://loonaautomation.github.io/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Compress an Image to an Exact Size in KB — Any Target | Loona">
+<meta name="twitter:description" content="Need an image at exactly 20KB, 100KB, 200KB or any other size? Learn the three levers — dimensions, format and quality — with a worked example and the mistakes to avoid.">
+<meta name="twitter:image" content="https://loonaautomation.github.io/og-image.jpg">
+<meta name="theme-color" content="#062e2a">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loonaautomation.github.io/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://loonaautomation.github.io/icon-192.png">
+<link rel="apple-touch-icon" href="https://loonaautomation.github.io/apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Loona Automation","url":"https://loonaautomation.github.io/","email":"loonaautomation@gmail.com","founder":{"@type":"Person","name":"Aurang Zeb Loona"},"logo":"https://loonaautomation.github.io/icon-512.png"},{"@type":"Article","headline":"How to Compress an Image to an Exact Size in KB","description":"Need an image at exactly 20KB, 100KB, 200KB or any other size? Learn the three levers — dimensions, format and quality — with a worked example and the mistakes to avoid.","image":"https://loonaautomation.github.io/og-image.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://loonaautomation.github.io/guides/how-to-compress-image-to-exact-size.html"},"url":"https://loonaautomation.github.io/guides/how-to-compress-image-to-exact-size.html","author":{"@type":"Person","name":"Aurang Zeb Loona"},"publisher":{"@type":"Organization","name":"Loona Automation","url":"https://loonaautomation.github.io/","logo":{"@type":"ImageObject","url":"https://loonaautomation.github.io/icon-512.png"}}}]}</script>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Home</a> &raquo; <a href="../index.html#guides">Guides &amp; How-Tos</a> &raquo; Compress an Image to an Exact Size in KB</p>
+<h1>How to Compress an Image to an Exact Size in KB</h1>
+<p><em>By Aurang Zeb Loona — Loona Automation</em></p>
+
+<p>Most compression advice stops at "make the file smaller". Real life is more specific than that: a job portal wants your photograph at 200KB or less, a signature scan at 20KB, a document upload somewhere under 300KB, a marketplace image below 1MB. The target changes from form to form, and guessing with a quality slider until the number happens to fit is slow and unreliable. This guide explains the three levers that control an image's file size, shows a worked example of hitting an exact target, and lists the mistakes that make people miss.</p>
+
+<h2>The Three Levers That Control File Size</h2>
+<p>An image file's size is decided by three things, and understanding them turns compression from luck into arithmetic:</p>
+<ul>
+<li><strong>Dimensions (pixel count).</strong> This is the biggest lever. A 6000 × 4000 photo holds 24 million pixels; resize it to 1200 × 800 and you keep 960,000 pixels — 4% of the original data. Halving the width and height quarters the file, roughly, before anything else is touched.</li>
+<li><strong>Format.</strong> JPG is built for photographs and compresses them efficiently. PNG is built for sharp edges — text, logos, screenshots — and produces much larger files for photos. WebP usually beats JPG by a further margin where it is accepted. Converting a photo from PNG to JPG often cuts its size several-fold on its own.</li>
+<li><strong>Quality (compression level).</strong> JPG and WebP let you trade detail for size. The top of the scale wastes bytes on differences no eye can see; dropping from quality 95 to 85 typically removes a large share of the file while the picture still looks the same at normal viewing size. Very low settings are where blockiness and smearing appear.</li>
+</ul>
+<p>Used in the right order — shrink dimensions first, pick the right format, then fine-tune quality — almost any reasonable target is reachable without wrecking the picture.</p>
+
+<h2>A Worked Example: 5.2 MB Down to a 200KB Target</h2>
+<p>Suppose a job portal asks for a scanned certificate "no larger than 200KB", and your scan is a 6000 × 4000 pixel JPG of 5.2 MB. Watch the levers work in sequence. First, the scan is resized to 1600 × 1067 pixels — still more than enough to read every word on screen or in print at A4 width — which by itself brings the file down to roughly 700KB–900KB. Second, it is saved as JPG (it already is; a PNG version of the same scan would be several megabytes larger). Third, the quality is fine-tuned: at quality 85 the file might read about 260KB, still too big; at quality 78 it lands around 195KB — under the target, with a small safety margin, and the text still crisp. A compress-to-target tool does this last step automatically, testing quality settings until the file fits just under the number you gave it. That is the whole method: big cuts from dimensions, then small, precise cuts from quality.</p>
+
+<h2>Step-by-Step with a Free Tool</h2>
+<ol>
+<li><strong>Work from the original file</strong> — the camera photo or first scan, never a copy that has already been through a messaging app.</li>
+<li><strong>Crop to the subject.</strong> Cut away empty borders and background the form does not need.</li>
+<li><strong>Open the <a href="https://loonaautomation.github.io/loona-image-compressor/">Loona Image Compressor</a></strong> and add your image. It runs in your browser, so the file never leaves your device.</li>
+<li><strong>Enter your exact target in KB</strong> (for example 200) rather than dragging a quality slider and hoping.</li>
+<li><strong>Compress and inspect the result at full size</strong> — zoom into a face or a line of text. If it is not readable, resize less aggressively and compress again from the original.</li>
+<li><strong>Verify the final size in the file's properties</strong> before uploading, aiming a few KB under the stated limit.</li>
+</ol>
+
+<h2>Common Mistakes</h2>
+<ul>
+<li><strong>Compressing before cropping and resizing.</strong> Quality is the weakest lever; using it alone to force a huge image into a tiny file is what produces unreadable results.</li>
+<li><strong>Keeping documents in full colour.</strong> A black-and-white document scanned in colour carries three channels of data for a one-channel page. Scanning or converting to greyscale can cut a document's size dramatically with no loss of readability.</li>
+<li><strong>Saving a photograph as PNG "for quality".</strong> For photos, PNG usually means a file five to ten times larger for no visible gain at form sizes — the single most common reason a file will not fit.</li>
+<li><strong>Uploading the ZIP.</strong> If you batch-compressed several images and received a ZIP archive, extract it and upload the image inside; portals reject the archive itself.</li>
+<li><strong>Destroying resolution a document needs.</strong> Text must stay readable — for document scans, keep enough pixels that the smallest print is sharp (short side of at least roughly 1,000 pixels for a full page) and let quality do the remaining work.</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Can any image be compressed to any size?</h3>
+<p>Almost — but with a trade-off that steepens at extremes. A detailed group photograph forced to 20KB will look poor at any settings, because there is a floor below which the data simply is not there. For very small targets, resize more (the form only displays a small picture anyway) rather than crushing quality further.</p>
+<h3>Some forms also set a minimum size. How do I make a file bigger?</h3>
+<p>A few systems reject files that are too small, suspecting a fake or a thumbnail. Re-saving rarely helps honestly — the right fix is to go back to the source: scan at a higher resolution, or use the original uncropped photo, so the larger file contains real detail rather than padding.</p>
+<h3>Why do two tools give different sizes for the same image and quality?</h3>
+<p>"Quality 80" is not a universal unit — each encoder interprets the scale differently and makes different choices about colour detail. This is exactly why aiming at a target size, and then verifying the result, beats trusting a slider.</p>
+<h3>Does compressing an image change its dimensions?</h3>
+<p>No. Compression changes the file size; resizing changes the dimensions. They are separate operations, and confusing them is why some people end up with a small file whose dimensions a form still rejects — check both requirements every time.</p>
+
+<p>Put the method to work with the free <a href="https://loonaautomation.github.io/loona-image-compressor/">Loona Image Compressor</a> — set any target from 20KB upward, process up to 100 images at once, and keep every file on your own device. For the specific case of application-form photographs, see also our guide to <a href="how-to-compress-image-to-50kb.html">compressing an image to 50KB</a>.</p>
+</main>
+<footer>
+<nav>
+<a href="../index.html">Home</a> |
+<a href="../about.html">About</a> |
+<a href="../contact.html">Contact</a> |
+<a href="../privacy-policy.html">Privacy Policy</a> |
+<a href="../terms.html">Terms</a>
+</nav>
+</footer>
+</body>
+</html>
