@@ -72,7 +72,26 @@ h2.sec{color:var(--teal);font-size:1.55rem;margin:28px 0 4px} p.sub{color:#556;m
 .faq h3{color:var(--teal);margin-bottom:2px}.faq p{margin-top:2px;color:#445}
 footer{background:var(--teal);color:#f3e9c8;text-align:center;padding:20px 14px;border-top:3px solid var(--gold);font-size:.94rem}
 footer a{color:var(--gold2);margin:0 7px}
-@media(max-width:560px){.hero h1{font-size:1.7rem}nav a{margin:0 5px;font-size:.85rem}}</style>
+@media(max-width:560px){.hero h1{font-size:1.7rem}nav a{margin:0 5px;font-size:.85rem}}
+.ls{max-width:640px;margin:22px auto 4px;position:relative;text-align:left}
+.ls-box{display:flex;background:#fff;border-radius:999px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.28);border:2px solid var(--gold)}
+.ls-box input{flex:1;border:0;outline:0;padding:14px 18px;font-size:1.02rem;min-width:0;color:var(--ink);background:#fff}
+.ls-box button{border:0;background:var(--gold);color:#231a00;font-weight:800;padding:0 22px;font-size:1rem;cursor:pointer}
+.ls-box button:hover{background:var(--gold2)}
+.ls-list{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#fff;border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.35);z-index:60;max-height:70vh;overflow-y:auto}
+.ls-item{display:block;padding:10px 16px;text-decoration:none;border-bottom:1px solid #eee9da}
+.ls-item:last-of-type{border-bottom:0}
+.ls-item:hover,.ls-item.act{background:#fbf6df}
+.ls-nm{font-weight:700;color:var(--ink)}
+.ls-badge{display:inline-block;margin-left:8px;background:var(--teal);color:#ffe9a8;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:999px;vertical-align:2px;white-space:nowrap}
+.ls-ds{display:block;color:#5a6660;font-size:.85rem;margin-top:1px}
+.ls-all{display:block;padding:10px 16px;text-align:center;font-weight:700;color:var(--teal2);text-decoration:none;background:#f3efe0}
+.ls-none{padding:12px 16px;color:#5a6660;font-size:.92rem}
+.ls-chips{margin-top:14px;text-align:center;color:#dcebe2;font-size:.9rem}
+.ls-chips a{display:inline-block;margin:3px;padding:5px 12px;border:1px solid rgba(255,233,168,.55);border-radius:999px;color:#ffe9a8;text-decoration:none;font-size:.85rem}
+.ls-chips a:hover{background:rgba(255,233,168,.16)}
+@media(max-width:560px){.ls-box button{padding:0 14px}.ls-box input{padding:12px 14px;font-size:.98rem}}
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5L43M13ZYT"></script>
 <script>
@@ -103,6 +122,12 @@ footer a{color:var(--gold2);margin:0 7px}
 <header class="site"><img src="icon-192.png" alt="Loona Automation logo"><div class="nm">LOONA <span>AUTOMATION</span></div><nav><a href="index.html">Home</a><a href="index.html#tools">Free Tools</a><a href="index.html#services">AI Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></header>
 <section class="hero"><img src="icon-512.png" alt="Loona Automation golden eagle logo"><h1>Loona <span>Automation</span></h1>
 <p>Free online tools and smart AI services that solve real problems — made in Pakistan, for the whole world. No signup walls, no watermarks, no expiry tricks.</p>
+<div class="ls"><form id="lsForm" role="search" autocomplete="off">
+<div class="ls-box"><input id="lsInput" type="search" placeholder="Search 950+ free tools&hellip; try &lsquo;age calculator&rsquo;" aria-label="Search 950+ free tools" autocomplete="off"><button type="submit">Search</button></div>
+<div id="lsList" class="ls-list" role="listbox" hidden></div>
+</form>
+<div class="ls-chips">Popular: <a href="https://loonaautomation.github.io/loona-calculators/age-calculator/">Age Calculator</a><a href="https://loonaautomation.github.io/loona-calculators/emi-calculator/">EMI Calculator</a><a href="https://loonaautomation.github.io/loona-calculators/zakat-calculator/">Zakat Calculator</a><a href="https://loonaautomation.github.io/loona-pdf-tools/excel-to-pdf/">Excel to PDF</a><a href="https://loonaautomation.github.io/loona-qr-codes/">QR Generator</a><a href="https://loonaautomation.github.io/loona-text-tools/word-counter/">Word Counter</a><a href="https://loonaautomation.github.io/loona-calculators/simple-calculator/">Simple Calculator</a></div>
+</div>
 <a class="btn g" href="#tools">Explore 30 Free Tools</a><a class="btn o" href="#services">AI Services for Business</a></section>
 <div class="stats"><div><b>30</b>Free tools &amp; apps</div><div><b>100%</b>Free core tools</div><div><b>0</b>Signups forced</div><div><b>24/7</b>AI services working</div></div>
 <main>
@@ -213,5 +238,154 @@ footer a{color:var(--gold2);margin:0 7px}
 </main>
 <footer>© 2026 Loona Automation · Founder: Aurang Zeb Loona · Contact: <a href="mailto:loonaautomation@gmail.com">loonaautomation@gmail.com</a><br><a href="index.html">Home</a>·<a href="about.html">About</a>·<a href="contact.html">Contact</a>·<a href="privacy-policy.html">Privacy Policy</a>·<a href="terms.html">Terms</a></footer>
 <script>/*loona-pwa*/(function(){if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}var D=null;function S(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;}function B(m){if(S()||document.getElementById('loona-install-btn'))return;var b=document.createElement('button');b.id='loona-install-btn';b.type='button';b.textContent=String.fromCodePoint(0x1F4F2)+' Install App';b.setAttribute('style','position:fixed;right:16px;bottom:16px;z-index:2147483000;background:#062e2a;color:#fff;border:1px solid #c9a227;border-radius:999px;padding:11px 18px;font:600 14px/1.2 system-ui,-apple-system,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35);cursor:pointer');b.addEventListener('click',function(){if(m==='p'&&D){D.prompt();D.userChoice.then(function(){D=null;b.remove();});}else{alert('Install this app: tap the Share button, then choose "Add to Home Screen".');}});document.body.appendChild(b);}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();D=e;B('p');});window.addEventListener('appinstalled',function(){var b=document.getElementById('loona-install-btn');if(b)b.remove();});if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!S()){window.addEventListener('load',function(){B('i');});}})();</script>
+<script>/*loona-search*/
+/* Loona hub tool search — lazy-loads search-index.json on first focus/typing.
+   Matching: word-wise exact > name-prefix > keyword > light fuzzy (edit distance 1),
+   following the pattern proven on the tool-qr-codes page. Popular tools win ties. */
+(function () {
+  "use strict";
+  var form = document.getElementById('lsForm'),
+      input = document.getElementById('lsInput'),
+      list = document.getElementById('lsList');
+  if (!form || !input || !list) return;
+  var INDEX_URL = 'search-index.json', data = null, loading = null, active = -1, current = [];
+
+  function norm(s) { return (s || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim(); }
+  function lev(a, b) {
+    if (a === b) return 0;
+    var la = a.length, lb = b.length, i, j;
+    if (Math.abs(la - lb) > 1) return 2;
+    var prev = [], cur = [];
+    for (j = 0; j <= lb; j++) prev[j] = j;
+    for (i = 1; i <= la; i++) {
+      cur[0] = i; var best = 99;
+      for (j = 1; j <= lb; j++) {
+        var v = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1));
+        cur[j] = v; if (v < best) best = v;
+      }
+      if (best > 1) return 2;
+      var t = prev; prev = cur; cur = t;
+    }
+    return prev[lb];
+  }
+  function wordLevel(w, nameWords, hayWords) {
+    var i;
+    for (i = 0; i < nameWords.length; i++) if (nameWords[i] === w) return 30;
+    for (i = 0; i < nameWords.length; i++) if (w.length >= 3 && nameWords[i].indexOf(w) === 0) return 24;
+    for (i = 0; i < hayWords.length; i++) if (hayWords[i] === w) return 20;
+    if (w.length >= 4) {
+      for (i = 0; i < nameWords.length; i++) if (lev(w, nameWords[i]) <= 1) return 17;
+      for (i = 0; i < hayWords.length; i++) if (lev(w, hayWords[i]) <= 1) return 12;
+    }
+    for (i = 0; i < nameWords.length; i++) if (nameWords[i].indexOf(w) >= 0) return 14;
+    return 0;
+  }
+  function runSearch(q, limit) {
+    var query = norm(q);
+    if (!query || !data) return [];
+    var qw = query.split(' '), out = [];
+    for (var e = 0; e < data.length; e++) {
+      var it = data[e], name = norm(it.n),
+          hay = name + ' ' + norm(it.s) + ' ' + (it.k || ''),
+          nameWords = name.split(' '), hayWords = hay.split(' '),
+          sum = 0, ok = true;
+      for (var i = 0; i < qw.length; i++) {
+        var lv = wordLevel(qw[i], nameWords, hayWords);
+        if (lv === 0) { ok = false; break; }
+        sum += lv;
+      }
+      if (!ok) continue;
+      var score = sum * 10;
+      if (name === query) score += 100000;
+      else if (name.indexOf(query) === 0) score += 5000;
+      else if (name.indexOf(query) >= 0) score += 2000;
+      if (qw.length > 1) {
+        var allN = true;
+        for (var k = 0; k < qw.length; k++) if (nameWords.indexOf(qw[k]) < 0) allN = false;
+        if (allN) score += 800;
+      }
+      score -= (typeof it.p === 'number' ? it.p : 400) * 0.6;
+      score -= name.length * 0.3;
+      out.push({ it: it, score: score });
+    }
+    out.sort(function (a, b) { return b.score - a.score; });
+    return out.slice(0, limit).map(function (x) { return x.it; });
+  }
+  function popular(n) {
+    if (!data) return [];
+    return data.filter(function (e) { return (typeof e.p === 'number' ? e.p : 400) < 30; })
+               .sort(function (a, b) { return a.p - b.p; }).slice(0, n);
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function badge(e) { return e.c === 'Website' ? 'Website' : (e.c === 'Guide' ? 'Guide' : e.s.replace(/^Loona /, '')); }
+  function render(items, q) {
+    active = -1; current = items;
+    if (!items.length) {
+      list.innerHTML = '<div class="ls-none">No tool matches that search yet. Try &ldquo;age&rdquo;, &ldquo;emi&rdquo;, &ldquo;zakat&rdquo; or &ldquo;pdf&rdquo;.</div>';
+    } else {
+      var h = items.map(function (e, i) {
+        return '<a class="ls-item" role="option" data-i="' + i + '" href="' + esc(e.u) + '">' +
+               '<span class="ls-nm">' + esc(e.n) + '</span><span class="ls-badge">' + esc(badge(e)) + '</span>' +
+               '<span class="ls-ds">' + esc(e.d) + '</span></a>';
+      }).join('');
+      if (q) h += '<a class="ls-all" href="search/?q=' + encodeURIComponent(q) + '">See all results &rarr;</a>';
+      list.innerHTML = h;
+      var links = list.querySelectorAll('.ls-item');
+      for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('mouseenter', function () { setActive(parseInt(this.getAttribute('data-i'), 10)); });
+      }
+    }
+    list.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+  }
+  function hide() { list.hidden = true; active = -1; input.setAttribute('aria-expanded', 'false'); }
+  function setActive(i) {
+    active = i;
+    var links = list.querySelectorAll('.ls-item');
+    for (var j = 0; j < links.length; j++) links[j].classList.toggle('act', j === i);
+    if (i >= 0 && links[i]) links[i].scrollIntoView({ block: 'nearest' });
+  }
+  function loadIndex() {
+    if (data) return Promise.resolve(data);
+    if (loading) return loading;
+    loading = fetch(INDEX_URL).then(function (r) { return r.json(); })
+      .then(function (j) { data = j; return j; })
+      .catch(function () { data = []; return data; });
+    return loading;
+  }
+  var timer = null;
+  function onType() {
+    var q = input.value;
+    loadIndex().then(function () {
+      if (!norm(q)) { render(popular(6), ''); return; }
+      render(runSearch(q, 8), q);
+    });
+  }
+  input.addEventListener('focus', function () { loadIndex().then(function () { if (!norm(input.value)) render(popular(6), ''); }); });
+  input.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(onType, 70); });
+  input.addEventListener('keydown', function (ev) {
+    if (ev.key === 'ArrowDown' || ev.key === 'ArrowUp') {
+      ev.preventDefault();
+      if (list.hidden) { onType(); return; }
+      var n = current.length; if (!n) return;
+      setActive(ev.key === 'ArrowDown' ? (active + 1) % n : (active - 1 + n) % n);
+    } else if (ev.key === 'Escape') { hide(); }
+  });
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var q = input.value;
+    if (active >= 0 && current[active]) { window.location.href = current[active].u; return; }
+    loadIndex().then(function () {
+      var best = runSearch(q, 1);
+      if (best.length) window.location.href = best[0].u;
+      else window.location.href = 'search/?q=' + encodeURIComponent(q);
+    });
+  });
+  document.addEventListener('click', function (ev) { if (!form.contains(ev.target)) hide(); });
+})();
+
+</script>
 </body>
 </html>
