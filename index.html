@@ -239,106 +239,206 @@ footer a{color:var(--gold2);margin:0 7px}
 <footer>© 2026 Loona Automation · Founder: Aurang Zeb Loona · Contact: <a href="mailto:loonaautomation@gmail.com">loonaautomation@gmail.com</a><br><a href="index.html">Home</a>·<a href="about.html">About</a>·<a href="contact.html">Contact</a>·<a href="privacy-policy.html">Privacy Policy</a>·<a href="terms.html">Terms</a></footer>
 <script>/*loona-pwa*/(function(){if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}var D=null;function S(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;}function B(m){if(S()||document.getElementById('loona-install-btn'))return;var b=document.createElement('button');b.id='loona-install-btn';b.type='button';b.textContent=String.fromCodePoint(0x1F4F2)+' Install App';b.setAttribute('style','position:fixed;right:16px;bottom:16px;z-index:2147483000;background:#062e2a;color:#fff;border:1px solid #c9a227;border-radius:999px;padding:11px 18px;font:600 14px/1.2 system-ui,-apple-system,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35);cursor:pointer');b.addEventListener('click',function(){if(m==='p'&&D){D.prompt();D.userChoice.then(function(){D=null;b.remove();});}else{alert('Install this app: tap the Share button, then choose "Add to Home Screen".');}});document.body.appendChild(b);}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();D=e;B('p');});window.addEventListener('appinstalled',function(){var b=document.getElementById('loona-install-btn');if(b)b.remove();});if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!S()){window.addEventListener('load',function(){B('i');});}})();</script>
 <script>/*loona-search*/
-/* Loona hub tool search — lazy-loads search-index.json on first focus/typing.
-   Matching: word-wise exact > name-prefix > keyword > light fuzzy (edit distance 1),
-   following the pattern proven on the tool-qr-codes page. Popular tools win ties. */
+/* Loona hub tool search v2 — lazy-loads /search-index.json on first focus/typing.
+   v2 fixes: a failed fetch no longer poisons the session (it retries on the next
+   keystroke/focus), a "Loading tools…" state shows while the index downloads,
+   an embedded popular-tools fallback keeps search alive offline, Roman Urdu
+   aliases, joined-word matching, dedupe and tool-over-guide ranking. */
 (function () {
   "use strict";
   var form = document.getElementById('lsForm'),
       input = document.getElementById('lsInput'),
       list = document.getElementById('lsList');
   if (!form || !input || !list) return;
-  var INDEX_URL = 'search-index.json', data = null, loading = null, active = -1, current = [];
+  var INDEX_URL = '/search-index.json';
+  var FALLBACK = [{"n":"Age Calculator","u":"https://loonaautomation.github.io/loona-calculators/age-calculator/","s":"Loona Calculators","c":"Calculator","d":"Find your exact age in years, months and days from your date of birth.","k":"age am birth birthday calc calculate calculator calculators chronology date days","p":0},{"n":"EMI & Loan Calculator","u":"https://loonaautomation.github.io/loona-calculators/emi-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate eMI & Loan free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators emi loan","p":1},{"n":"Zakat Calculator","u":"https://loonaautomation.github.io/loona-calculators/zakat-calculator/","s":"Loona Calculators","c":"Calculator","d":"Work out your zakat at 2.5% on cash, gold, silver and savings, with the current nisab.","k":"calc calculate calculator calculators charity fitr gold islamic muslim nisab sad","p":2},{"n":"Simple Calculator","u":"https://loonaautomation.github.io/loona-calculators/simple-calculator/","s":"Loona Calculators","c":"Calculator","d":"A clean, simple calculator with big buttons, a history tape and full keyboard support.","k":"add basic calc calculate calculator calculators divide maths multiply online sim","p":3},{"n":"Scientific Calculator","u":"https://loonaautomation.github.io/loona-calculators/scientific-calculator/","s":"Loona Calculators","c":"Calculator","d":"Scientific calculator with trigonometry, logarithms, powers and roots.","k":"calc calculate calculator calculators cos ln log power root scientific sin squar","p":4},{"n":"Percentage Calculator","u":"https://loonaautomation.github.io/loona-calculators/percentage-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate percentage free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators percentage","p":5},{"n":"BMI Calculator","u":"https://loonaautomation.github.io/loona-calculators/bmi-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate bMI free online \u2014 fast, private, no sign-up.","k":"bmi calc calculate calculator calculators","p":6},{"n":"CGPA Calculator","u":"https://loonaautomation.github.io/loona-calculators/cgpa-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate cGPA free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators cgpa","p":7},{"n":"Excel to PDF","u":"https://loonaautomation.github.io/loona-pdf-tools/excel-to-pdf/","s":"Loona PDF Tools","c":"Tool","d":"Convert Excel spreadsheets (XLS, XLSX) to clean PDF pages \u2014 free, on your device.","k":"convert excel pdf sheet spreadsheet to tools xls xlsx","p":8},{"n":"Word Counter","u":"https://loonaautomation.github.io/loona-text-tools/word-counter/","s":"Loona Text Tools","c":"Counter","d":"Count word free online \u2014 fast, private, no sign-up.","k":"counter text tools word","p":11},{"n":"Loan Calculator","u":"https://loonaautomation.github.io/loona-calculators/loan-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate loan free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators loan","p":14},{"n":"GPA Calculator","u":"https://loonaautomation.github.io/loona-calculators/gpa-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate gPA free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators gpa","p":15},{"n":"Date Calculator","u":"https://loonaautomation.github.io/loona-calculators/date-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate date free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators date","p":16},{"n":"Time Calculator","u":"https://loonaautomation.github.io/loona-calculators/time-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate time free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators time","p":17},{"n":"Password Generator","u":"https://loonaautomation.github.io/loona-text-tools/password-generator/","s":"Loona Text Tools","c":"Generator","d":"Generate password free online \u2014 fast, private, no sign-up.","k":"generator password text tools","p":21},{"n":"Currency Converter","u":"https://loonaautomation.github.io/loona-salary-calculators/currency-converter.html","s":"Loona Salary & Tax Calculators","c":"Converter","d":"Convert currency free online \u2014 fast, private, no sign-up.","k":"calculators converter currency salary tax","p":22},{"n":"Resume Builder","u":"https://loonaautomation.github.io/loona-resume-builder/resume-builder/","s":"Loona Resume Builder","c":"Builder","d":"Build resume free online \u2014 fast, private, no sign-up.","k":"builder resume","p":24},{"n":"WiFi QR Code Generator","u":"https://loonaautomation.github.io/loona-qr-codes/wifi-qr-code-generator/","s":"Loona QR Codes","c":"Generator","d":"Generate wiFi QR Code free online \u2014 fast, private, no sign-up.","k":"barcode code codes generator qr qrcode wifi","p":400},{"n":"Electricity Bill","u":"https://loonaautomation.github.io/loona-calculators/electricity-bill-calculator/","s":"Loona Calculators","c":"Tool","d":"Free online tool from Loona Calculators \u2014 fast, private, no sign-up.","k":"bill calculators electricity","p":400},{"n":"Merge","u":"https://loonaautomation.github.io/loona-pdf-tools/merge-pdf/","s":"Loona PDF Tools","c":"Tool","d":"Free online tool from Loona PDF Tools \u2014 fast, private, no sign-up.","k":"merge pdf tools","p":400},{"n":"Loona Image Compressor","u":"https://loonaautomation.github.io/loona-image-compressor/","s":"Loona Website","c":"Website","d":"Compress images to an exact size in KB \u2014 batch up to 100 photos, JPG/PNG/WebP, download all as ZIP. 100% private,\u2026","k":"compressor homepage image loona site tools website","p":60},{"n":"QR Code with Logo Generator","u":"https://loonaautomation.github.io/loona-qr-codes/qr-code-with-logo-generator/","s":"Loona QR Codes","c":"Generator","d":"Generate qR Code with Logo free online \u2014 fast, private, no sign-up.","k":"barcode code codes generator logo qr qrcode with","p":400},{"n":"Case Converter","u":"https://loonaautomation.github.io/loona-text-tools/case-converter/","s":"Loona Text Tools","c":"Converter","d":"Convert case free online \u2014 fast, private, no sign-up.","k":"case converter text tools","p":400},{"n":"JSON Formatter","u":"https://loonaautomation.github.io/loona-dev-tools/json-formatter/","s":"Loona Dev Tools","c":"Formatter","d":"Format jSON free online \u2014 fast, private, no sign-up.","k":"dev formatter json tools","p":400},{"n":"Typing Test","u":"https://loonaautomation.github.io/loona-text-tools/typing-test/","s":"Loona Text Tools","c":"Tool","d":"Free online tool from Loona Text Tools \u2014 fast, private, no sign-up.","k":"test text tools typing","p":400},{"n":"Hijri Calendar","u":"https://loonaautomation.github.io/loona-islamic-tools/hijri-calendar/","s":"Loona Islamic Tools","c":"Tool","d":"Free online tool from Loona Islamic Tools \u2014 fast, private, no sign-up.","k":"calendar hijri islamic tools","p":400},{"n":"Marla / Kanal Converter","u":"https://loonaautomation.github.io/loona-calculators/marla-kanal-area-converter/","s":"Loona Calculators","c":"Converter","d":"Convert marla / Kanal free online \u2014 fast, private, no sign-up.","k":"calculators converter kanal marla","p":400},{"n":"SIP Calculator","u":"https://loonaautomation.github.io/loona-calculators/sip-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate sIP free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators sip","p":400},{"n":"Compound Interest","u":"https://loonaautomation.github.io/loona-calculators/compound-interest-calculator/","s":"Loona Calculators","c":"Tool","d":"Free online tool from Loona Calculators \u2014 fast, private, no sign-up.","k":"calculators compound interest","p":400},{"n":"Sleep Calculator","u":"https://loonaautomation.github.io/loona-calculators/sleep-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate sleep free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators sleep","p":400},{"n":"Water Intake Calculator","u":"https://loonaautomation.github.io/loona-calculators/water-intake-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate water Intake free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators intake water","p":400},{"n":"Fuel Cost Calculator","u":"https://loonaautomation.github.io/loona-calculators/fuel-cost-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate fuel Cost free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators cost fuel","p":400},{"n":"Pregnancy Due Date","u":"https://loonaautomation.github.io/loona-calculators/pregnancy-due-date-calculator/","s":"Loona Calculators","c":"Tool","d":"Free online tool from Loona Calculators \u2014 fast, private, no sign-up.","k":"calculators date due pregnancy","p":400},{"n":"VAT / GST Calculator","u":"https://loonaautomation.github.io/loona-calculators/vat-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate vAT / GST free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators gst vat","p":400},{"n":"Gratuity Calculator","u":"https://loonaautomation.github.io/loona-calculators/gratuity-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate gratuity free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators gratuity","p":400},{"n":"Mortgage Calculator","u":"https://loonaautomation.github.io/loona-calculators/mortgage-calculator/","s":"Loona Calculators","c":"Calculator","d":"Calculate mortgage free online \u2014 fast, private, no sign-up.","k":"calc calculate calculator calculators mortgage","p":400}];
+  var data = null, loading = null, usingFallback = false, active = -1, current = [];
 
-  function norm(s) { return (s || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim(); }
-  function lev(a, b) {
-    if (a === b) return 0;
-    var la = a.length, lb = b.length, i, j;
-    if (Math.abs(la - lb) > 1) return 2;
-    var prev = [], cur = [];
-    for (j = 0; j <= lb; j++) prev[j] = j;
-    for (i = 1; i <= la; i++) {
-      cur[0] = i; var best = 99;
-      for (j = 1; j <= lb; j++) {
-        var v = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1));
-        cur[j] = v; if (v < best) best = v;
-      }
-      if (best > 1) return 2;
-      var t = prev; prev = cur; cur = t;
+  /* Loona search core v2 — shared by the homepage dropdown and the /search/ page.
+   Adds over v1: Roman Urdu alias layer, joined-word matching, keyword prefix match,
+   URL+name dedupe, tool-over-guide boost. `data` is supplied by the page glue. */
+var ALIASES = {
+  "umer": "age", "umar": "age", "umr": "age",
+  "tankhwa": "salary", "tankha": "salary", "tankhwah": "salary", "tankhah": "salary",
+  "ujrat": "salary", "amadani": "tax", "kharcha": "expense",
+  "bijli": "electricity", "qarz": "loan", "udhaar": "loan", "sood": "interest",
+  "kiraya": "rent", "ghar": "home", "makaan": "home", "makan": "home",
+  "tasveer": "image photo", "tasvir": "image photo",
+  "awaz": "audio voice", "likhai": "text", "waqt": "time", "tareekh": "date",
+  "din": "day", "saal": "year", "mahina": "month", "hafta": "week",
+  "hisaab": "calculator", "hisab": "calculator",
+  "wazan": "weight", "wazn": "weight", "sehat": "bmi",
+  "sona": "gold", "chandi": "silver", "zameen": "marla kanal",
+  "dukaan": "business", "mehengai": "inflation",
+  "paise": "finance", "paisa": "finance", "rupay": "currency", "rupaya": "currency",
+  "nokri": "resume", "mulazmat": "resume", "rozgar": "resume",
+  "parhai": "study", "taleem": "education", "imtihan": "exam test",
+  "khana": "food", "gari": "car", "gaari": "car",
+  "petrol": "fuel", "namaz": "prayer", "roza": "ramadan",
+  "janamdin": "birthday age", "salgirah": "birthday",
+  "ustad": "notes", "shagird": "study", "kitab": "book audiobook",
+  "parhna": "reading", "likhna": "typing", "riyazi": "math",
+  "bachat": "savings", "sarmaya": "investment", "karobar": "business",
+  "kaarobar": "business", "tijarat": "business", "munafa": "profit",
+  "qeemat": "cost", "neend": "sleep", "paani": "water", "pani": "water",
+  "shadi": "wedding", "shaadi": "wedding",
+  "lambai": "unit converter", "raftar": "speed",
+  "ginti": "counter count"
+};
+function norm(s) { return (s || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim(); }
+function lev(a, b) {
+  if (a === b) return 0;
+  var la = a.length, lb = b.length, i, j;
+  if (Math.abs(la - lb) > 1) return 2;
+  var prev = [], cur = [];
+  for (j = 0; j <= lb; j++) prev[j] = j;
+  for (i = 1; i <= la; i++) {
+    cur[0] = i; var best = 99;
+    for (j = 1; j <= lb; j++) {
+      var v = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1));
+      cur[j] = v; if (v < best) best = v;
     }
-    return prev[lb];
+    if (best > 1) return 2;
+    var t = prev; prev = cur; cur = t;
   }
-  function wordLevel(w, nameWords, hayWords) {
-    var i;
-    for (i = 0; i < nameWords.length; i++) if (nameWords[i] === w) return 30;
-    for (i = 0; i < nameWords.length; i++) if (w.length >= 3 && nameWords[i].indexOf(w) === 0) return 24;
-    for (i = 0; i < hayWords.length; i++) if (hayWords[i] === w) return 20;
-    if (w.length >= 4) {
-      for (i = 0; i < nameWords.length; i++) if (lev(w, nameWords[i]) <= 1) return 17;
-      for (i = 0; i < hayWords.length; i++) if (lev(w, hayWords[i]) <= 1) return 12;
-    }
-    for (i = 0; i < nameWords.length; i++) if (nameWords[i].indexOf(w) >= 0) return 14;
-    return 0;
+  return prev[lb];
+}
+function wordLevel(w, nameWords, hayWords, nameJoined) {
+  var i;
+  for (i = 0; i < nameWords.length; i++) if (nameWords[i] === w) return 30;
+  for (i = 0; i < nameWords.length; i++) if (w.length >= 3 && nameWords[i].indexOf(w) === 0) return 24;
+  for (i = 0; i < hayWords.length; i++) if (hayWords[i] === w) return 20;
+  for (i = 0; i < hayWords.length; i++) if (w.length >= 3 && hayWords[i].indexOf(w) === 0) return 18;
+  if (w.length >= 4 && nameJoined.indexOf(w) >= 0) return 22;
+  if (w.length >= 4) {
+    for (i = 0; i < nameWords.length; i++) if (lev(w, nameWords[i]) <= 1) return 17;
+    for (i = 0; i < hayWords.length; i++) if (lev(w, hayWords[i]) <= 1) return 12;
   }
-  function runSearch(q, limit) {
-    var query = norm(q);
-    if (!query || !data) return [];
-    var qw = query.split(' '), out = [];
-    for (var e = 0; e < data.length; e++) {
-      var it = data[e], name = norm(it.n),
-          hay = name + ' ' + norm(it.s) + ' ' + (it.k || ''),
-          nameWords = name.split(' '), hayWords = hay.split(' '),
-          sum = 0, ok = true;
+  for (i = 0; i < nameWords.length; i++) if (nameWords[i].indexOf(w) >= 0) return 14;
+  return 0;
+}
+function expandWords(qw) {
+  /* variants tried (best score wins): the words themselves; each Roman Urdu
+     word swapped for the FIRST word of its English meaning; the full meaning;
+     and — for multi-word queries — the words joined into one ("wi fi"→"wifi"). */
+  var prim = [], full = [], changed = false;
+  for (var i = 0; i < qw.length; i++) {
+    var a = ALIASES[qw[i]];
+    if (a) {
+      changed = true;
+      var parts = a.split(' ');
+      prim.push(parts[0]);
+      for (var j = 0; j < parts.length; j++) full.push(parts[j]);
+    } else { prim.push(qw[i]); full.push(qw[i]); }
+  }
+  var out = [qw];
+  if (changed) { out.push(prim); if (full.join(' ') !== prim.join(' ')) out.push(full); }
+  if (qw.length > 1) out.push([qw.join('')]);
+  return out;
+}
+function runSearch(q, limit) {
+  var query = norm(q);
+  if (!query || !data) return [];
+  var variants = expandWords(query.split(' ')), out = [];
+  for (var e = 0; e < data.length; e++) {
+    var it = data[e], name = norm(it.n),
+        hay = name + ' ' + norm(it.s) + ' ' + (it.k || ''),
+        nameWords = name.split(' '), hayWords = hay.split(' '),
+        nameJoined = name.replace(/ /g, ''), best = -1;
+    for (var v = 0; v < variants.length; v++) {
+      var qw = variants[v], sum = 0, ok = true;
       for (var i = 0; i < qw.length; i++) {
-        var lv = wordLevel(qw[i], nameWords, hayWords);
+        var lv = wordLevel(qw[i], nameWords, hayWords, nameJoined);
         if (lv === 0) { ok = false; break; }
         sum += lv;
       }
       if (!ok) continue;
-      var score = sum * 10;
-      if (name === query) score += 100000;
-      else if (name.indexOf(query) === 0) score += 5000;
-      else if (name.indexOf(query) >= 0) score += 2000;
+      var score = sum * 10, qs = qw.join(' '), qJoined = qs.replace(/ /g, '');
+      if (name === qs) score += 100000;
+      else if (name.indexOf(qs) === 0) score += 5000;
+      else if (name.indexOf(qs) >= 0) score += 2000;
+      if (nameJoined === qJoined) score += 9000;
+      else if (qJoined.length >= 4 && nameJoined.indexOf(qJoined) >= 0) score += 2500;
       if (qw.length > 1) {
         var allN = true;
         for (var k = 0; k < qw.length; k++) if (nameWords.indexOf(qw[k]) < 0) allN = false;
         if (allN) score += 800;
       }
+      /* tool whose name carries the searched word beats a guide about it */
+      if (it.c !== 'Guide') {
+        for (var m = 0; m < qw.length; m++) if (nameWords.indexOf(qw[m]) >= 0) { score += 350; break; }
+      }
       score -= (typeof it.p === 'number' ? it.p : 400) * 0.6;
       score -= name.length * 0.3;
-      out.push({ it: it, score: score });
+      if (score > best) best = score;
     }
-    out.sort(function (a, b) { return b.score - a.score; });
-    return out.slice(0, limit).map(function (x) { return x.it; });
+    if (best >= 0) out.push({ it: it, score: best });
   }
-  function popular(n) {
-    if (!data) return [];
-    return data.filter(function (e) { return (typeof e.p === 'number' ? e.p : 400) < 30; })
-               .sort(function (a, b) { return a.p - b.p; }).slice(0, n);
+  out.sort(function (a, b) { return b.score - a.score; });
+  /* dedupe: same URL once, same tool name once (keep the better-ranked copy) */
+  var seenU = {}, seenN = {}, res = [];
+  for (var r = 0; r < out.length; r++) {
+    var en = out[r].it, key = norm(en.n);
+    if (seenU[en.u] || seenN[key]) continue;
+    seenU[en.u] = 1; seenN[key] = 1; res.push(en);
+    if (res.length >= limit) break;
   }
+  return res;
+}
+function popular(n) {
+  if (!data) return [];
+  return data.filter(function (e) { return (typeof e.p === 'number' ? e.p : 400) < 30; })
+             .sort(function (a, b) { return a.p - b.p; }).slice(0, n);
+}
+
   function esc(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
   function badge(e) { return e.c === 'Website' ? 'Website' : (e.c === 'Guide' ? 'Guide' : e.s.replace(/^Loona /, '')); }
+  function itemHtml(e, i) {
+    return '<a class="ls-item" role="option" data-i="' + i + '" href="' + esc(e.u) + '">' +
+           '<span class="ls-nm">' + esc(e.n) + '</span><span class="ls-badge">' + esc(badge(e)) + '</span>' +
+           '<span class="ls-ds">' + esc(e.d) + '</span></a>';
+  }
+  function bindItems() {
+    var links = list.querySelectorAll('.ls-item');
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener('mouseenter', function () { setActive(parseInt(this.getAttribute('data-i'), 10)); });
+    }
+  }
   function render(items, q) {
     active = -1; current = items;
-    if (!items.length) {
-      list.innerHTML = '<div class="ls-none">No tool matches that search yet. Try &ldquo;age&rdquo;, &ldquo;emi&rdquo;, &ldquo;zakat&rdquo; or &ldquo;pdf&rdquo;.</div>';
-    } else {
-      var h = items.map(function (e, i) {
-        return '<a class="ls-item" role="option" data-i="' + i + '" href="' + esc(e.u) + '">' +
-               '<span class="ls-nm">' + esc(e.n) + '</span><span class="ls-badge">' + esc(badge(e)) + '</span>' +
-               '<span class="ls-ds">' + esc(e.d) + '</span></a>';
-      }).join('');
-      if (q) h += '<a class="ls-all" href="search/?q=' + encodeURIComponent(q) + '">See all results &rarr;</a>';
-      list.innerHTML = h;
-      var links = list.querySelectorAll('.ls-item');
-      for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener('mouseenter', function () { setActive(parseInt(this.getAttribute('data-i'), 10)); });
-      }
-    }
+    var h = '';
+    if (usingFallback) h += '<div class="ls-none">Showing popular tools &mdash; the full index is on its way&hellip;</div>';
+    h += items.map(itemHtml).join('');
+    if (q) h += '<a class="ls-all" href="search/?q=' + encodeURIComponent(q) + '">See all results &rarr;</a>';
+    list.innerHTML = h;
+    bindItems();
     list.hidden = false;
     input.setAttribute('aria-expanded', 'true');
+  }
+  function renderZero(q) {
+    var pop = popular(6);
+    active = -1; current = pop;
+    var h = '<div class="ls-none">No exact match for &ldquo;' + esc(q) + '&rdquo; &mdash; try these popular tools:</div>' +
+            pop.map(itemHtml).join('') +
+            '<a class="ls-all" href="search/?q=' + encodeURIComponent(q) + '">See all results &rarr;</a>';
+    list.innerHTML = h;
+    bindItems();
+    list.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+  }
+  function renderLoading() {
+    list.innerHTML = '<div class="ls-none">Loading tools&hellip;</div>';
+    list.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+  }
+  function refresh() {
+    var q = input.value;
+    if (!data) { renderLoading(); return; }
+    if (!norm(q)) { render(popular(6), ''); return; }
+    var res = runSearch(q, 8);
+    if (res.length) render(res, q); else renderZero(q);
   }
   function hide() { list.hidden = true; active = -1; input.setAttribute('aria-expanded', 'false'); }
   function setActive(i) {
@@ -347,23 +447,23 @@ footer a{color:var(--gold2);margin:0 7px}
     for (var j = 0; j < links.length; j++) links[j].classList.toggle('act', j === i);
     if (i >= 0 && links[i]) links[i].scrollIntoView({ block: 'nearest' });
   }
-  function loadIndex() {
-    if (data) return Promise.resolve(data);
-    if (loading) return loading;
-    loading = fetch(INDEX_URL).then(function (r) { return r.json(); })
-      .then(function (j) { data = j; return j; })
-      .catch(function () { data = []; return data; });
-    return loading;
-  }
-  var timer = null;
-  function onType() {
-    var q = input.value;
-    loadIndex().then(function () {
-      if (!norm(q)) { render(popular(6), ''); return; }
-      render(runSearch(q, 8), q);
+  function ensureIndex() {
+    if (data && !usingFallback) return;
+    if (loading) return;
+    loading = fetch(INDEX_URL).then(function (r) {
+      if (!r.ok) throw new Error('index ' + r.status);
+      return r.json();
+    }).then(function (j) {
+      data = j; usingFallback = false; loading = null; refresh();
+    }).catch(function () {
+      loading = null;                 /* not poisoned: next keystroke/focus retries */
+      if (!data) { data = FALLBACK; usingFallback = true; }
+      refresh();
     });
   }
-  input.addEventListener('focus', function () { loadIndex().then(function () { if (!norm(input.value)) render(popular(6), ''); }); });
+  var timer = null;
+  function onType() { ensureIndex(); refresh(); }
+  input.addEventListener('focus', onType);
   input.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(onType, 70); });
   input.addEventListener('keydown', function (ev) {
     if (ev.key === 'ArrowDown' || ev.key === 'ArrowUp') {
@@ -377,11 +477,12 @@ footer a{color:var(--gold2);margin:0 7px}
     ev.preventDefault();
     var q = input.value;
     if (active >= 0 && current[active]) { window.location.href = current[active].u; return; }
-    loadIndex().then(function () {
+    ensureIndex();
+    if (data) {
       var best = runSearch(q, 1);
-      if (best.length) window.location.href = best[0].u;
-      else window.location.href = 'search/?q=' + encodeURIComponent(q);
-    });
+      if (best.length) { window.location.href = best[0].u; return; }
+    }
+    window.location.href = 'search/?q=' + encodeURIComponent(q);
   });
   document.addEventListener('click', function (ev) { if (!form.contains(ev.target)) hide(); });
 })();
