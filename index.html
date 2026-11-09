@@ -97,6 +97,7 @@ footer a{color:var(--gold2);margin:0 7px}
   }
 }
 </script>
+<link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
 <header class="site"><img src="icon-192.png" alt="Loona Automation logo"><div class="nm">LOONA <span>AUTOMATION</span></div><nav><a href="index.html">Home</a><a href="index.html#tools">Free Tools</a><a href="index.html#services">AI Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></header>
@@ -211,5 +212,6 @@ footer a{color:var(--gold2);margin:0 7px}
 <div class="faq"><h3>Who is behind Loona Automation?</h3><p>Loona Automation is founded by Aurang Zeb Loona. Read more on the <a href="about.html">About page</a>, or reach us any time at <a href="mailto:loonaautomation@gmail.com">loonaautomation@gmail.com</a>.</p></div>
 </main>
 <footer>© 2026 Loona Automation · Founder: Aurang Zeb Loona · Contact: <a href="mailto:loonaautomation@gmail.com">loonaautomation@gmail.com</a><br><a href="index.html">Home</a>·<a href="about.html">About</a>·<a href="contact.html">Contact</a>·<a href="privacy-policy.html">Privacy Policy</a>·<a href="terms.html">Terms</a></footer>
+<script>/*loona-pwa*/(function(){if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}var D=null;function S(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;}function B(m){if(S()||document.getElementById('loona-install-btn'))return;var b=document.createElement('button');b.id='loona-install-btn';b.type='button';b.textContent=String.fromCodePoint(0x1F4F2)+' Install App';b.setAttribute('style','position:fixed;right:16px;bottom:16px;z-index:2147483000;background:#062e2a;color:#fff;border:1px solid #c9a227;border-radius:999px;padding:11px 18px;font:600 14px/1.2 system-ui,-apple-system,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35);cursor:pointer');b.addEventListener('click',function(){if(m==='p'&&D){D.prompt();D.userChoice.then(function(){D=null;b.remove();});}else{alert('Install this app: tap the Share button, then choose "Add to Home Screen".');}});document.body.appendChild(b);}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();D=e;B('p');});window.addEventListener('appinstalled',function(){var b=document.getElementById('loona-install-btn');if(b)b.remove();});if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!S()){window.addEventListener('load',function(){B('i');});}})();</script>
 </body>
 </html>

@@ -33,6 +33,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="https://loonaautomation.github.io/icon-192.png">
 <link rel="apple-touch-icon" href="https://loonaautomation.github.io/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Loona Automation","url":"https://loonaautomation.github.io/","email":"loonaautomation@gmail.com","founder":{"@type":"Person","name":"Aurang Zeb Loona"},"logo":"https://loonaautomation.github.io/icon-512.png"},{"@type":"Article","headline":"How to Create an Invoice Online: What It Must Contain and How to Do It in Minutes","description":"Learn what a professional invoice must contain and how to create one online in minutes — free, no sign-up. Tips for freelancers and small businesses.","image":"https://loonaautomation.github.io/og-image.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://loonaautomation.github.io/guides/how-to-create-an-invoice-online.html"},"url":"https://loonaautomation.github.io/guides/how-to-create-an-invoice-online.html","author":{"@type":"Person","name":"Aurang Zeb Loona"},"publisher":{"@type":"Organization","name":"Loona Automation","url":"https://loonaautomation.github.io/","logo":{"@type":"ImageObject","url":"https://loonaautomation.github.io/icon-512.png"}}}]}</script>
+<link rel="manifest" href="../manifest.webmanifest">
 </head>
 <body>
 <main>
@@ -113,5 +114,6 @@
 <a href="../terms.html">Terms</a>
 </nav>
 </footer>
+<script>/*loona-pwa*/(function(){if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('../sw.js').catch(function(){});});}var D=null;function S(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;}function B(m){if(S()||document.getElementById('loona-install-btn'))return;var b=document.createElement('button');b.id='loona-install-btn';b.type='button';b.textContent=String.fromCodePoint(0x1F4F2)+' Install App';b.setAttribute('style','position:fixed;right:16px;bottom:16px;z-index:2147483000;background:#062e2a;color:#fff;border:1px solid #c9a227;border-radius:999px;padding:11px 18px;font:600 14px/1.2 system-ui,-apple-system,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35);cursor:pointer');b.addEventListener('click',function(){if(m==='p'&&D){D.prompt();D.userChoice.then(function(){D=null;b.remove();});}else{alert('Install this app: tap the Share button, then choose "Add to Home Screen".');}});document.body.appendChild(b);}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();D=e;B('p');});window.addEventListener('appinstalled',function(){var b=document.getElementById('loona-install-btn');if(b)b.remove();});if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!S()){window.addEventListener('load',function(){B('i');});}})();</script>
 </body>
 </html>

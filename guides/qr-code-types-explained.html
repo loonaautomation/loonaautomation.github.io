@@ -33,6 +33,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="https://loonaautomation.github.io/icon-192.png">
 <link rel="apple-touch-icon" href="https://loonaautomation.github.io/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Loona Automation","url":"https://loonaautomation.github.io/","email":"loonaautomation@gmail.com","founder":{"@type":"Person","name":"Aurang Zeb Loona"},"logo":"https://loonaautomation.github.io/icon-512.png"},{"@type":"Article","headline":"QR Code Types Explained: WiFi, vCard, Payment, Location and More","description":"A QR code is a container — its type is the format of what is inside. What each type stores, static vs dynamic codes, error-correction levels, and how to choose.","image":"https://loonaautomation.github.io/og-image.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://loonaautomation.github.io/guides/qr-code-types-explained.html"},"url":"https://loonaautomation.github.io/guides/qr-code-types-explained.html","author":{"@type":"Person","name":"Aurang Zeb Loona"},"publisher":{"@type":"Organization","name":"Loona Automation","url":"https://loonaautomation.github.io/","logo":{"@type":"ImageObject","url":"https://loonaautomation.github.io/icon-512.png"}}}]}</script>
+<link rel="manifest" href="../manifest.webmanifest">
 </head>
 <body>
 <main>
@@ -93,5 +94,6 @@
 <a href="../terms.html">Terms</a>
 </nav>
 </footer>
+<script>/*loona-pwa*/(function(){if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('../sw.js').catch(function(){});});}var D=null;function S(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;}function B(m){if(S()||document.getElementById('loona-install-btn'))return;var b=document.createElement('button');b.id='loona-install-btn';b.type='button';b.textContent=String.fromCodePoint(0x1F4F2)+' Install App';b.setAttribute('style','position:fixed;right:16px;bottom:16px;z-index:2147483000;background:#062e2a;color:#fff;border:1px solid #c9a227;border-radius:999px;padding:11px 18px;font:600 14px/1.2 system-ui,-apple-system,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35);cursor:pointer');b.addEventListener('click',function(){if(m==='p'&&D){D.prompt();D.userChoice.then(function(){D=null;b.remove();});}else{alert('Install this app: tap the Share button, then choose "Add to Home Screen".');}});document.body.appendChild(b);}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();D=e;B('p');});window.addEventListener('appinstalled',function(){var b=document.getElementById('loona-install-btn');if(b)b.remove();});if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!S()){window.addEventListener('load',function(){B('i');});}})();</script>
 </body>
 </html>
