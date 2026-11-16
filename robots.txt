@@ -1,7 +1,49 @@
 # Loona Automation — robots.txt
 # Upload to the ROOT of the loonaautomation.github.io repo
 # (same place as the hub index.html and sitemap.xml)
+#
+# IMPORTANT — NEVER BLANKET-BLOCK AI BOTS:
+# This single root robots.txt governs ALL Loona sites on
+# loonaautomation.github.io (31 sites, ~203,600 pages).
+# Never add a blanket Disallow for AI crawlers here.
+# Blocking a search bot (OAI-SearchBot, Claude-SearchBot,
+# PerplexityBot) removes Loona from that engine's search
+# answers entirely. All AI search and training crawlers
+# below are intentionally ALLOWED — do not block them.
 User-agent: *
+Allow: /
+
+# --- AI search bots (explicit allow — insurance against
+# --- any future accidental group-specific block) ---
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# --- AI training / user-action bots (explicit allow) ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://loonaautomation.github.io/sitemap.xml
