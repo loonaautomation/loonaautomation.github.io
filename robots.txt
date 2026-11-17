@@ -4,7 +4,7 @@
 #
 # IMPORTANT — NEVER BLANKET-BLOCK AI BOTS:
 # This single root robots.txt governs ALL Loona sites on
-# loonaautomation.github.io (31 sites, ~203,600 pages).
+# loonaautomation.github.io (32 sites, ~203,600 pages).
 # Never add a blanket Disallow for AI crawlers here.
 # Blocking a search bot (OAI-SearchBot, Claude-SearchBot,
 # PerplexityBot) removes Loona from that engine's search
