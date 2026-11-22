@@ -27,7 +27,7 @@
 - [AgentA](https://loonaautomation.github.io/agentA/): A personal AI agent — give it a task and watch it plan and work step by step; it can save notes to a Google Sheet and create Gmail drafts.
 - [Loona AI](https://loonaautomation.github.io/loona-ai/): Free all-in-one AI assistant — chat, photo understanding and voice in English, Urdu and Roman Urdu.
 - [Loona AI Notes](https://loonaautomation.github.io/loona-ai-notes/): Teacher notes organised by Class, Subject and Chapter, with AI teaching tools.
-- [Loona Bolti Kitab](https://loonaautomation.github.io/loona-bolti-kitab/): Read-aloud (talking book) app — photograph a book page and hear it spoken in Urdu and English.
+- [Loona Speaking Book](https://loonaautomation.github.io/loona-bolti-kitab/): Read-aloud (talking book) app — photograph a book page and hear it spoken in Urdu and English.
 - [Loona Ad Studio](https://loonaautomation.github.io/loona-ad-studio/): AI ad creative studio.
 - [Loona Autopilot](https://loonaautomation.github.io/loona-autopilot/): Automation assistant app.
 - [Loona Calling Agent](https://loonaautomation.github.io/loona-calling-agent/): AI calling agent for businesses.
