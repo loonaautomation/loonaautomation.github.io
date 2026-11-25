@@ -58,4 +58,4 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-Sitemap: https://loonaautomation.github.io/sitemap.xml
+Sitemap: https://loonaautomation.com/sitemap.xml

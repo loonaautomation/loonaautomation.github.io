@@ -4,7 +4,7 @@
 
 ## Main websites
 
-- [Loona Automation — all tools and services](https://loonaautomation.github.io/): The main hub linking every free Loona tool and AI service.
+- [Loona Automation — all tools and services](https://loonaautomation.com/): The main hub linking every free Loona tool and AI service.
 - [Loona Automation — Company / AI Automation Studio](https://loonaautomation.github.io/loona-automation/): Services, products catalogue, founder profile and FAQ for the studio.
 
 ## Free tools
