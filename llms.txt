@@ -1,6 +1,6 @@
 # Loona Automation
 
-> Loona Automation is an AI automation studio founded by Aurang Zeb Loona, a school teacher and AI teacher trainer from Jaranwala, Faisalabad, Punjab, Pakistan. It builds free online tools and AI services that solve real problems — no signup, no watermark, and tools that run in the browser so user data stays on the user's own device. Its mission, "Bolti Duniya", is that every book should speak, in every language, for everyone who cannot read. Public contact: loonaautomation@gmail.com.
+> Loona Automation is an AI automation studio founded by Aurang Zeb Loona, a school teacher and AI teacher trainer from Jaranwala, Faisalabad, Punjab, Pakistan. It builds free online tools and AI services that solve real problems — no signup, no watermark, and tools that run in the browser so user data stays on the user's own device. Its mission, "Bolti Duniya", is that every book should speak, in every language, for everyone who cannot read. Public contact: info@loonaautomation.com.
 
 ## Main websites
 
